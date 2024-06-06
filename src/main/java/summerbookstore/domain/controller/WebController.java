@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import summerbookstore.domain.service.image.ImageService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +24,7 @@ public class WebController {
 
     @GetMapping("/")
     public String index(Model model) {
-        List <String> bookCoverUrls = imageService.getAll()
+        List <String> bookCoverUrls = imageService.getAllImages()
                                         .stream()
                                         .map(Image::getUrl)
                                         .collect(Collectors.toList());

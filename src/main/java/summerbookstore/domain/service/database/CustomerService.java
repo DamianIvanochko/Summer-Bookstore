@@ -2,6 +2,7 @@ package summerbookstore.domain.service.database;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import summerbookstore.domain.model.database.Book;
 import summerbookstore.domain.model.database.Customer;
 import summerbookstore.domain.repository.database.CustomerRepository;
 
@@ -22,5 +23,13 @@ public class CustomerService {
 
     public void deleteAll() {
         customerRepository.deleteAll();
+    }
+
+    public void deleteById(Long id) {
+        customerRepository.deleteById(id);
+    }
+
+    public Customer getById(Long id) {
+        return customerRepository.getById(id);
     }
 }

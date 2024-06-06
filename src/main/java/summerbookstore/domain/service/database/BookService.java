@@ -23,4 +23,12 @@ public class BookService {
     public void deleteAll() {
         bookRepository.deleteAll();
     }
+
+    public void deleteById(Long id) {
+        bookRepository.deleteById(id);
+    }
+
+    public Book getById(Long id) {
+        return bookRepository.getById(id);
+    }
 }

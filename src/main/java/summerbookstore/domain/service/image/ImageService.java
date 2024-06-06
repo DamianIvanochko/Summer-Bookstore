@@ -5,7 +5,6 @@ import summerbookstore.domain.model.image.Image;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 @Service
 public class ImageService {
@@ -20,7 +19,7 @@ public class ImageService {
         images.add(image);
     }
 
-    public List<Image> getAll() {
+    public List<Image> getAllImages() {
         return new ArrayList <>(images);
     }
 
@@ -30,7 +29,7 @@ public class ImageService {
                 .findAny().get();
     }
 
-    public void remove(String url) {
+    public void removeByUrl(String url) {
         images.removeIf(image -> image.getUrl().equals(url));
     }
 }
