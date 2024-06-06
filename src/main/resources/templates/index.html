@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Summer Bookstore</title>
+    <link type="text/css" id="dark-mode" rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 th:text="${title}" id="title">Title name</h1>
+    <div class="grid-container">
+        <div class="grid-item" th:each="bookCoverUrl : ${bookCoverUrls}">
+            <img th:src="@{${bookCoverUrl}}" alt="book">
+        </div>
+    </div>
+    <div class="book-list"></div>
+</body>
+</html>
