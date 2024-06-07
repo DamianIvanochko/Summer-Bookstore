@@ -11,6 +11,7 @@ import java.awt.*;
 @Component
 public class DatabaseInitializer implements CommandLineRunner {
     private BookService bookService;
+    private ImageService imageService = new ImageService();
 
     public DatabaseInitializer(BookService bookService) {
         this.bookService = bookService;
@@ -18,5 +19,6 @@ public class DatabaseInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
     }
 }

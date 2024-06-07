@@ -11,7 +11,6 @@ import org.mockito.MockitoAnnotations;
 import summerbookstore.domain.model.database.Book;
 import summerbookstore.domain.repository.database.BookRepository;
 import summerbookstore.domain.service.database.BookService;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -96,11 +95,11 @@ public class BookServiceTest {
 
         when(bookRepository.getById(book.getId())).thenReturn(book);
 
-        Book bookGotById = bookService.getById(book.getId());
+        Book savedBook = bookService.getById(book.getId());
 
-        assertThat(bookGotById).isNotNull().isEqualTo(book);
-        assertThat(bookGotById.getName()).isEqualTo(book.getName());
-        assertThat(bookGotById.getAuthor()).isEqualTo(book.getAuthor());
-        assertThat(bookGotById.getPrice()).isEqualTo(book.getPrice());
+        assertThat(savedBook).isNotNull().isEqualTo(book);
+        assertThat(savedBook.getName()).isEqualTo(book.getName());
+        assertThat(savedBook.getAuthor()).isEqualTo(book.getAuthor());
+        assertThat(savedBook.getPrice()).isEqualTo(book.getPrice());
     }
 }

@@ -1,35 +1,31 @@
 package summerbookstore.domain.service.image;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import summerbookstore.domain.model.image.Image;
+import summerbookstore.domain.repository.image.ImageRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ImageService {
-    List <Image> images = new ArrayList <>();
+    @Autowired
+    private ImageRepository imageRepository;
 
-    public ImageService() {
-        images.add(new Image("Harry Potter", "/images/harry_potter.jpg"));
-        images.add(new Image("Lord of The Rings", "/images/lord_of_the_rings.jpeg"));
-    }
-
-    public void addImage(Image image) {
-        images.add(image);
+    public void save(Image image) {
+        imageRepository.save(image);
     }
 
     public List<Image> getAllImages() {
-        return new ArrayList <>(images);
+        return new ArrayList <>(imageRepository.findAll());
     }
 
-    public Image findByUrl(String url) {
-        return images.stream()
-                .filter(image -> image.getUrl().equals(url))
-                .findAny().get();
+    public Image findById(Long id) {
+        return imageRepository.getById(id);
     }
 
-    public void removeByUrl(String url) {
-        images.removeIf(image -> image.getUrl().equals(url));
+    public void deleteById(Long id) {
+        imageRepository.deleteById(id);
     }
 }
