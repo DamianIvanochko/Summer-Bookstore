@@ -1,4 +1,4 @@
-package summerbookstore.domain;
+package summerbookstore.domain.database;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;

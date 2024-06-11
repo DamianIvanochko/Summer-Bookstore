@@ -13,19 +13,23 @@ public class ImageService {
     @Autowired
     private ImageRepository imageRepository;
 
-    public void save(Image image) {
-        imageRepository.save(image);
+    public Image save(Image image) {
+        return imageRepository.save(image);
     }
 
     public List<Image> getAllImages() {
         return new ArrayList <>(imageRepository.findAll());
     }
 
-    public Image findById(Long id) {
+    public Image getById(Long id) {
         return imageRepository.getById(id);
     }
 
     public void deleteById(Long id) {
         imageRepository.deleteById(id);
+    }
+
+    public void deleteAll() {
+        imageRepository.deleteAll();
     }
 }

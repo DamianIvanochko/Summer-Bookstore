@@ -2,15 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Summer Bookstore</title>
-    <link type="text/css" id="dark-mode" rel="stylesheet" href="style.css?v=1.2">
+    <link type="text/css" id="dark-mode" rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1 th:text="${title}" id="title">Title name</h1>
+
     <div class="grid-container">
-        <div class="grid-item" th:each="bookCoverUrl : ${bookCoverUrls}">
-            <img th:src="@{${bookCoverUrl}}" alt="book">
-        </div>
+        <form th:action="@{/addBook}" method="post" class="grid-item" th:each="bookCoverUrl, iter : ${bookCoverUrls}">
+            <input type="hidden" name="bookName" th:value="${bookNames[iter.index]}">
+
+            <img th:src="@{${bookCoverUrl}}" alt="Book Cover">
+            <p th:text="${bookNames[iter.index]}">Book Name</p>
+            <p th:text="${books[iter.index].getPrice()}" class="book-price">Book Price</p>
+
+            <button type="button" class="addBookButton" onclick="this.closest('form').submit();">Add Book</button>
+        </form>
     </div>
-    <div class="book-list"></div>
+
+    <h2 class="books-added-header">Your Books:</h2>
+    <div class="book-list-container">
+        <form th:if="${bookListNames}" th:each="bookListName : ${bookListNames}" th:action="@{/deleteFromList}" method="post" class="list-item">
+            <input type="hidden" name="bookToRemove" th:value="${bookListName}">
+            <p th:text="${bookListName}" onclick="this.closest('form').submit();">Book name</p>
+        </form>
+    </div>
 </body>
 </html>
