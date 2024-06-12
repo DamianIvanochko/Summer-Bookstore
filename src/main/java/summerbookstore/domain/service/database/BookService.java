@@ -31,4 +31,8 @@ public class BookService {
     public Book getById(Long id) {
         return bookRepository.getById(id);
     }
+
+    public Book getByName(String bookName) {
+        return bookRepository.findByName(bookName);
+    }
 }

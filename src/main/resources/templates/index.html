@@ -5,7 +5,10 @@
     <link type="text/css" id="dark-mode" rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 th:text="${title}" id="title">Title name</h1>
+    <header>
+        <h1 class="title">SummerBookstore.com</h1>
+        <h1 class="sign-in">Sign in</h1>
+    </header>
 
     <div class="grid-container">
         <form th:action="@{/addBook}" method="post" class="grid-item" th:each="bookCoverUrl, iter : ${bookCoverUrls}">
@@ -19,12 +22,16 @@
         </form>
     </div>
 
-    <h2 class="books-added-header">Your Books:</h2>
+    <h2>Your Books:</h2>
     <div class="book-list-container">
         <form th:if="${bookListNames}" th:each="bookListName : ${bookListNames}" th:action="@{/deleteFromList}" method="post" class="list-item">
             <input type="hidden" name="bookToRemove" th:value="${bookListName}">
             <p th:text="${bookListName}" onclick="this.closest('form').submit();">Book name</p>
         </form>
     </div>
+
+    <form th:action="@{/buyBooks}" method="post">
+        <button class="buy-button" type="submit" onclick="this.closest('form').submit();">Buy</button>
+    </form>
 </body>
 </html>
