@@ -92,7 +92,7 @@ public class ImageServiceTest {
 
         when(imageRepository.getById(image.getId())).thenReturn(image);
 
-        Image savedBook = imageService.getById(image.getId());
+        Image savedBook = imageService.findById(image.getId());
 
         assertThat(savedBook).isNotNull().isEqualTo(image);
         assertThat(savedBook.getName()).isEqualTo(image.getName());

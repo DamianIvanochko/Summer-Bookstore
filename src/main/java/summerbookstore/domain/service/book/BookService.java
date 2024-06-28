@@ -1,11 +1,12 @@
-package summerbookstore.domain.service.database;
+package summerbookstore.domain.service.book;
 
-import summerbookstore.domain.model.database.Book;
-import summerbookstore.domain.repository.database.BookRepository;
+import summerbookstore.domain.model.book.Book;
+import summerbookstore.domain.repository.book.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class BookService {
@@ -28,7 +29,12 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public Book getById(Long id) {
-        return bookRepository.getById(id);
+    public Book findById(Long id) {
+        return bookRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException());
+    }
+
+    public List <String> getCoverUrls() {
+        return bookRepository.getCoverUrls();
     }
 }

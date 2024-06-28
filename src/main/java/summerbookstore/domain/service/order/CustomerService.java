@@ -1,10 +1,9 @@
-package summerbookstore.domain.service.database;
+package summerbookstore.domain.service.order;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import summerbookstore.domain.model.database.Book;
-import summerbookstore.domain.model.database.Customer;
-import summerbookstore.domain.repository.database.CustomerRepository;
+import summerbookstore.domain.model.order.Customer;
+import summerbookstore.domain.repository.order.CustomerRepository;
 
 import java.util.List;
 

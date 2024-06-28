@@ -5,25 +5,22 @@
     <link type="text/css" id="dark-mode" rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 th:text="${title}" id="title">Title name</h1>
+    <h1>Summer Bookstore</h1>
 
     <div class="grid-container">
-        <form th:action="@{/addBook}" method="post" class="grid-item" th:each="bookCoverUrl, iter : ${bookCoverUrls}">
-            <input type="hidden" name="bookName" th:value="${bookNames[iter.index]}">
+        <form class="grid-item" th:each="book, iter : ${books}" th:action="@{/book/{bookId}(bookId=${book.getId()})}" th:method="post">
+            <img th:if="${coverUrls}" th:src="@{${coverUrls[__${iter.index}__]}}" alt="Book Cover">
+            <p th:text="${book.getName()}">Book Title</p>
+            <p th:text="${book.getPrice()}" class="book-price">Book Price</p>
 
-            <img th:src="@{${bookCoverUrl}}" alt="Book Cover">
-            <p th:text="${bookNames[iter.index]}">Book Name</p>
-            <p th:text="${books[iter.index].getPrice()}" class="book-price">Book Price</p>
-
-            <button type="button" class="addBookButton" onclick="this.closest('form').submit();">Add Book</button>
+            <button type="submit" class="add-btn" onclick="this.closest('form').submit();">Add Book</button>
         </form>
     </div>
 
-    <h2 class="books-added-header">Your Books:</h2>
-    <div class="book-list-container">
-        <form th:if="${bookListNames}" th:each="bookListName : ${bookListNames}" th:action="@{/deleteFromList}" method="post" class="list-item">
-            <input type="hidden" name="bookToRemove" th:value="${bookListName}">
-            <p th:text="${bookListName}" onclick="this.closest('form').submit();">Book name</p>
+    <h2 class="book-container-header">Your Books:</h2>
+    <div class="book-container">
+        <form class="list-item" th:if="${selectedBooks}" th:each="selectedBook : ${selectedBooks}" th:action="@{/book/delete/{bookId}(bookId=${selectedBook.id})}" th:method="post">
+            <p th:text="${selectedBook.name}" onclick="this.closest('form').submit();">Book name</p>
         </form>
     </div>
 </body>

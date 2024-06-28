@@ -1,4 +1,4 @@
-package summerbookstore.domain.database;
+package summerbookstore.domain.book;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,12 +8,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import summerbookstore.domain.model.database.Book;
-import summerbookstore.domain.repository.database.BookRepository;
-import summerbookstore.domain.service.database.BookService;
+import summerbookstore.domain.model.book.Book;
+import summerbookstore.domain.repository.book.BookRepository;
+import summerbookstore.domain.service.book.BookService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -88,14 +89,14 @@ public class BookServiceTest {
     }
 
     @Test
-    void getById() {
+    void findById() {
         Book book = new Book("book", "author");
         book.setId(1L);
         bookService.save(book);
 
-        when(bookRepository.getById(book.getId())).thenReturn(book);
+        when(bookRepository.findById(book.getId()).orElseThrow(NoSuchElementException::new)).thenReturn(book);
 
-        Book savedBook = bookService.getById(book.getId());
+        Book savedBook = bookService.findById(book.getId());
 
         assertThat(savedBook).isNotNull().isEqualTo(book);
         assertThat(savedBook.getName()).isEqualTo(book.getName());

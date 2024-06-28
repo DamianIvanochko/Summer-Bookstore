@@ -3,7 +3,7 @@ package summerbookstore.domain.model.image;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "image")
+@Table(name = "images")
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

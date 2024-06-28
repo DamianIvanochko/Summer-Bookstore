@@ -1,4 +1,4 @@
-package summerbookstore.domain.model.database;
+package summerbookstore.domain.model.book;
 
 import jakarta.persistence.*;
 

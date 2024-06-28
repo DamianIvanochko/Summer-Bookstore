@@ -1,4 +1,4 @@
-package summerbookstore.domain.database;
+package summerbookstore.domain.order;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,14 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import summerbookstore.domain.model.database.Book;
-import summerbookstore.domain.model.database.Customer;
-import summerbookstore.domain.repository.database.BookRepository;
-import summerbookstore.domain.repository.database.CustomerRepository;
-import summerbookstore.domain.service.database.BookService;
-import summerbookstore.domain.service.database.CustomerService;
-
-import static org.junit.jupiter.api.Assertions.*;
+import summerbookstore.domain.model.order.Customer;
+import summerbookstore.domain.repository.order.CustomerRepository;
+import summerbookstore.domain.service.order.CustomerService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
