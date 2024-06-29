@@ -19,8 +19,8 @@
 
     <h2 class="book-container-header">Your Books:</h2>
     <div class="book-container">
-        <form class="list-item" th:if="${selectedBooks}" th:each="selectedBook : ${selectedBooks}" th:action="@{/book/delete/{bookId}(bookId=${selectedBook.id})}" th:method="post">
-            <p th:text="${selectedBook.name}" onclick="this.closest('form').submit();">Book name</p>
+        <form class="list-item" th:if="${selectedBooks}" th:each="selectedBook : ${selectedBooks}" th:action="@{/book/delete/{bookId}(bookId=${selectedBook.getId()})}" th:method="post">
+            <p th:text="${selectedBook.getName()}" onclick="this.closest('form').submit();">Book name</p>
         </form>
     </div>
 </body>

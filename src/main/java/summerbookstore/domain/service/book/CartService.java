@@ -7,31 +7,21 @@ import java.util.*;
 
 @Service
 public class CartService {
-    private final Map<Long, String> selectedBooks;
+    private final List<Book> selectedBooks;
 
     public CartService() {
-        selectedBooks = new HashMap <>();
+        selectedBooks = new ArrayList <>();
     }
 
     public List <Book> getAllSelectedBooks() {
-        List <Book> books = new ArrayList <>();
-
-        for (Map.Entry<Long, String> entry : selectedBooks.entrySet()) {
-            Book book = new Book(Objects.toString(entry.getKey()), Objects.toString(entry.getValue()));
-
-            books.add(book);
-        }
-
-        return books;
+        return Collections.unmodifiableList(selectedBooks);
     }
 
-    public void addBook(Long id, String name) {
-        selectedBooks.put(id, name);
+    public void addBook(Book book) {
+        selectedBooks.add(book);
     }
 
-    public void deleteBook(Long id) {
-        String removed = selectedBooks.remove(id);
-
-        System.out.println(removed);
+    public void deleteBook(Book book) {
+        selectedBooks.remove(book);
     }
 }

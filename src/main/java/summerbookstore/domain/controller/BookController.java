@@ -37,14 +37,18 @@ public class BookController {
 
     @PostMapping("/book/{bookId}")
     public String addBook(@PathVariable Long bookId) {
-        cartService.addBook(bookId, bookService.findById(bookId).getName());
+        cartService.addBook(bookService.findById(bookId));
 
         return "redirect:/books";
     }
 
     @PostMapping("/book/delete/{bookId}")
     public String deleteBook(@PathVariable Long bookId) {
-        cartService.deleteBook(bookId);
+        Book book = bookService.findById(bookId);
+
+        if (book != null) {
+            cartService.deleteBook(book);
+        }
 
         return "redirect:/books";
     }
