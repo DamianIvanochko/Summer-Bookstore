@@ -37,4 +37,8 @@ public class BookService {
     public List <String> getCoverUrls() {
         return bookRepository.getCoverUrls();
     }
+
+    public Book getByName(String bookName) {
+        return bookRepository.findByName(bookName);
+    }
 }

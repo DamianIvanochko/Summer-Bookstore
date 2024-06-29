@@ -1,11 +1,30 @@
 body {
-    background: white;
-    font-family: cursive;
+    background: mintcream;
+    font-family: monospace;
     font-size: 16px;
     line-height: 1.5;
 }
-#title {
-    text-align: left;
+header {
+    display: flex;
+    align-items: center;
+    width: 1315px;
+    height: 60px;
+    border-bottom-style: inset;
+    border-bottom-color: #818181;
+    border-bottom-width: thin;
+    margin-bottom: 20px;
+}
+.title {
+    position: absolute;
+    left: 10px;
+}
+.sign-in {
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
+}
+.sign-in:hover {
+    color: #676767;
 }
 .grid-container {
     display: grid;
@@ -58,20 +77,18 @@ body {
     height: 120px;
     color: azure;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
 }
 .grid-item:hover > .book-price {
     opacity: 1;
 }
-.book-price:hover {
-    transition: scale(1.05);
-}
 .book-container {
     display: grid;
-    grid-template-columns: repeat(5, 170px);
-    grid-template-rows: repeat(1, 20px);
+    grid-template-columns: repeat(5, 190px);
+    grid-template-rows: repeat(2, 40px);
     justify-content: left;
     align-items: center;
+    gap: 10px;
 }
 .list-item {
     display: flex;

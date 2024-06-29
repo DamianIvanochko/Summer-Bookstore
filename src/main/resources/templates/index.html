@@ -5,7 +5,10 @@
     <link type="text/css" id="dark-mode" rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Summer Bookstore</h1>
+    <header>
+        <h1 class="title">SummerBookstore.com</h1>
+        <h1 class="sign-in">Sign in</h1>
+    </header>
 
     <div class="grid-container">
         <form class="grid-item" th:each="book, iter : ${books}" th:action="@{/book/{bookId}(bookId=${book.getId()})}" th:method="post">

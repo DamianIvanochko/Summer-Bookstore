@@ -10,17 +10,14 @@ public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "customer_id", nullable = false)
+    @Column(name = "customer_id")
     private Long customerId;
-    @Column(nullable = false)
     private String firstname;
-    @Column(nullable = false)
     private String lastname;
     @Column(name = "book_id", nullable = false)
     private Long bookId;
     @Column(name = "book_name", nullable = false)
     private String bookName;
-    @Column(nullable = false)
     private String email;
     @Column(name = "purchase_date", nullable = false)
     private LocalDate purchaseDate;
